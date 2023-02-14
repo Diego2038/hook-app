@@ -5,7 +5,7 @@ export const SimpleFormWithCustomHook = () => {
 
   
 
-  const { formState, onInputChange, username, email, password } = useForm({
+  const { formState, onInputChange, username, email, password, onResetForm } = useForm({
     username: '',
     email: '',
     password: '',
@@ -48,6 +48,11 @@ export const SimpleFormWithCustomHook = () => {
         onChange={ onInputChange }
         tabIndex="2"
       /> 
+
+      <button 
+        className="btn btn-primary mt-2"
+        onClick={ onResetForm }
+      >Reset</button>
 
     </>
   )

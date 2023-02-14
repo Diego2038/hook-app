@@ -13,10 +13,22 @@ export const useForm = ( initialForm = {} ) => {
     }));
   }
 
+  const onResetForm = () => {
+    for (const key in formState) {
+      // console.log(`{ ${ key }: ${formState[key]}}`);
+      /* setFormState( form => ({
+        ...form,
+        [ key ]: ''
+      }) ); */
+      setFormState( initialForm );
+    }
+  }
+
   return {
     ...formState,
     formState,
-    onInputChange
+    onInputChange,
+    onResetForm
   }
 
 }
