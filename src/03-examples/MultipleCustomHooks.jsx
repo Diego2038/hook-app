@@ -1,6 +1,7 @@
-import { useCounter } from "../hooks/useCounter";
-import { useFetch } from "../hooks/useFetch"
+ import { useCounter, useFetch } from "../hooks";
+import { IsLoading } from "./IsLoading";
 import { Quote } from "./Quote";
+import { HasError } from "./HasError";
 
  
 
@@ -12,7 +13,7 @@ export const MultipleCustomHooks = () => {
   const { counter, incrementCounter } = useCounter(1);
 
   const { data, hasError, isLoading } = useFetch(`https://api.breakingbadquotes.xyz/v1/quotes/${ counter }`); 
-  // const { author, quote } = !!data && data[0];
+  const { author, quote } = !!data && data[0];
   
 
   return(
@@ -20,23 +21,16 @@ export const MultipleCustomHooks = () => {
       <h1>MultipleCustomHook</h1>
       <ol>
         { 
-          ( isLoading ) ? <div className="alert alert-info text-center text-successful">  Loading....😎😎😎</div> 
-          : ( hasError )   ? <div className="alert alert-center text-danger">There's an internal problem in the server</div> 
-          : 
-          data.map( ( {quote, author } ) =>  (
-                            <Quote key={quote} auth={author} quote={quote}/>)) 
-                            
-          /* (<li className="m-2">
-            <blockquote>
-              <p className="mb-1">{ quote }</p>
-              <footer className="text-end mt-1">-  { author }</footer>
-              
-            </blockquote>
-          </li>) */
+          ( isLoading ) ? <IsLoading/>
+          : ( hasError )? <HasError/>
+          : <Quote auth={ author } quote={ quote } key={ quote }/>
+          /* data.map( ( {quote, author } ) =>  (
+                            <Quote key={quote} auth={author} quote={quote}/>)) */  
         }
       </ol>
 
         <button 
+          disabled={ isLoading || hasError }
           className="btn btn-primary"
           onClick={ () => incrementCounter(1) }>
           Next quote
