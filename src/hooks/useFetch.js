@@ -7,44 +7,45 @@ export const useFetch = ( url ) => {
   const [state, setState] = useState({
     data: null,
     isLoading: true,
-    hasError: false
+    hasError: null
   })
   
   const getData =  async () => {
     
-    setState( ( resp ) => ({
-      ...resp,
+    setState({
+      ...state,
       hasError: false,
       isLoading: true
-    }));
+    });
     
-    try {
+    // try {
       console.log({ url });
       const resp = await fetch( url);
       const data = await resp.json();
-      // console.log( {data });
+      console.log( {data });
       setState({
         data,
         isLoading: false,
         hasError: false
       });
-    } catch ( err ) {
+    // } 
+    /* catch ( err ) {
       setState({
         data: null,
         isLoading: false,
         hasError: true
       })
-    }
+    } */
   } 
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [ url ]); // ! aquí faltó poner el url
   
 
   return {
     data: state.data,
     isLoading: state.isLoading,
     hasError: state.hasError,
-  }
+  };
 }
