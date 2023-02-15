@@ -1,11 +1,11 @@
 import { useCounter, useFetch } from "../hooks";
-import { IsLoading, Quote, HasError } from './'; 
+import { IsLoading, Quote, HasError } from '../03-examples'; 
 
  
 
 
 
-export const MultipleCustomHooks = () => { 
+export const Layout = () => { 
 
 
   const { counter, incrementCounter } = useCounter(1);
