@@ -1,25 +1,59 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
+import { Elim } from "./Elim";
+import { TodoAdd } from "./TodoAdd";
+import { TodoList } from "./TodoList";
 import { todoReducer } from "./todoReducer";
 
 
 
 const initialState = [
-  {
-    id: new Date().getTime(),
-    description: 'Recolectar la piedra del alma',
-    done: false, 
-  },
-  {
-    id: new Date().getTime()*3,
-    description: 'Recolectar la piedra del amor',
-    done: true, 
-  },
+  // {
+  //   id: new Date().getTime(),
+  //   description: 'Recolectar la piedra del alma',
+  //   done: false, 
+  // },  
+  
   
 ];
 
+const myInitXd = () => {
+  return JSON.parse( localStorage.getItem( 'todos' ) ) || [] ;
+}
+
 export const TodoApp = () => {
 
-  const [ todos , dispatchTodos ] = useReducer( todoReducer, initialState );
+  // * useReducer es como un useState, sólo que se utiliza cuando
+  // * las variables reactivas a guardar son más complejas
+  const [ todos , dispatchTodos ] = useReducer( todoReducer, initialState, myInitXd );
+
+  const handleNewTodo = ( todo ) => {
+    const action = {
+      type: '[TODO] Add Todo',
+      payload: todo
+    }
+    dispatchTodos( action );
+  }
+
+  const handleDeleteTodo = ( id ) => {
+    const action = {
+      type: '[TODO] Remove Todo',
+      payload: id
+    }
+    dispatchTodos( action );
+  }
+
+  const handleToggleTodo = ( id ) => { 
+    const action = {
+      type: '[TODO] Toggle Todo',
+      payload: id
+    }
+    dispatchTodos( action );
+  }
+
+  useEffect(() => { 
+    localStorage.setItem( 'todos', JSON.stringify( todos ));
+  }, [ todos ]);
+  
 
   return (
     <>
@@ -28,32 +62,19 @@ export const TodoApp = () => {
 
       <div className="row">
         <div className="col-7">
-          <ul className="list-group">
-            {
-              todos.map( todo => (
-                <li className="list-group-item d-flex justify-content-between" key={todo.id}>
-                  <span className="align-self-center">Item 1</span> <button className="btn btn-danger ">Borrar</button></li>  
-              ))
-            }
-          </ul>
+          <TodoList todos={todos} onDeleteTodo={ handleDeleteTodo } onToggleTodo={ handleToggleTodo } />
         </div>
 
         <div className="col-5">
           <h4>Agregar TODO</h4>
           <hr />
-          <form>
-            <input 
-              type="text"
-              placeholder="What is to do"
-              className="form-control" />
-          </form>
-          <button
-            className="btn btn-secondary mt-2">
-            Add
-          </button>
+          <TodoAdd onNewTodo={handleNewTodo} />
         </div>
 
       </div>
+
+      <hr />
+      {/* <Elim/> */}
 
 
 
