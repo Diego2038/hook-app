@@ -10,3 +10,7 @@ button{
 .tachado{
   text-decoration: line-through;
 }
+
+a {
+  margin: 5px;
+}
