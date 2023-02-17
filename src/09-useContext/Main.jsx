@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate,} from "react-router-dom"
 import { HomePage, AboutPage, LoginPage, Navbar } from './'
- 
+import { UserProvider } from "./context/UserProvider"
 export const Main = () => {
-  return (
-    <>
+  return ( 
+    <UserProvider>
       <h1>Main</h1>
         <Navbar/>
       <hr />
@@ -19,6 +19,6 @@ export const Main = () => {
         {/* Así es como realizas redirección  */}
         
       </Routes>
-    </>
+    </UserProvider> 
   )
 }
