@@ -12,7 +12,7 @@ export const MultipleCustomHooks = () => {
 
   const { data, hasError, isLoading } = useFetch(`https://api.breakingbadquotes.xyz/v1/quotes/${ counter }`); 
   const { author, quote } = !!data && data[0];
-  
+  console.log("MultipleCustomHooks");
 
   return(
     <>

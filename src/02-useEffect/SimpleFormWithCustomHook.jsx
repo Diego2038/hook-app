@@ -5,10 +5,11 @@ export const SimpleFormWithCustomHook = () => {
 
   
 
-  const { formState, onInputChange, username, email, password, onResetForm } = useForm({
+  const { formState, onInputChange, username, email, password, onResetForm, pepito2 } = useForm({
     username: '',
     email: '',
     password: '',
+    pepito2: 'Es un elissir'
   });
 
   // const { username, email, password } = formState;
@@ -16,7 +17,7 @@ export const SimpleFormWithCustomHook = () => {
   return (
     <>
       <h1>Formulario simple con Custom Hook</h1>
-
+      <p>{ pepito2 }</p>
       <hr/>
 
       <input 

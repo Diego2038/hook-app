@@ -17,7 +17,7 @@ import { Main } from "./09-useContext/Main"
 export const HooksApp = () => {
   return (
     <>
-      <h1>HooksApp</h1>
+      {/* <h1>HooksApp</h1> */}
       {/* <CounterApp/> */}
       {/* <CounterWithCustomHooks/> */}
       {/* <SimpleForm/> */}

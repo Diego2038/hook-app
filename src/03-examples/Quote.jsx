@@ -10,6 +10,7 @@ export const Quote = ( { auth, quote }  ) => {
     console.log( pRef.current.getBoundingClientRect() );
     const { height, width } = pRef.current.getBoundingClientRect();
     setBoxSize({ height, width });
+    return () => console.log('Se terminó :(');
   }, [  ]);
 
 
@@ -18,7 +19,7 @@ export const Quote = ( { auth, quote }  ) => {
       <li className="m-2">
         <blockquote
           className="blockquote text-end"
-          style={{display: "flex"}}>
+          style={{display: "flex", color: "blue"}}>
           <p className="mb-1" ref={ pRef } >{ quote }</p>
           <footer className="blockquote-footer">-  { auth }</footer>
           

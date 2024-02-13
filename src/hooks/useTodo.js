@@ -21,7 +21,7 @@ export const useTodo = () => {
 
   const handleNewTodo = ( todo ) => {
     const action = {
-      type: '[TODO] Add Todo',
+      typeXD: '[TODO] Add Todo',
       payload: todo
     }
     dispatchTodos( action );
@@ -29,7 +29,7 @@ export const useTodo = () => {
 
   const handleDeleteTodo = ( id ) => {
     const action = {
-      type: '[TODO] Remove Todo',
+      typeXD: '[TODO] Remove Todo',
       payload: id
     }
     dispatchTodos( action );
@@ -37,7 +37,7 @@ export const useTodo = () => {
 
   const handleToggleTodo = ( id ) => { 
     const action = {
-      type: '[TODO] Toggle Todo',
+      typeXD: '[TODO] Toggle Todo',
       payload: id
     }
     dispatchTodos( action );

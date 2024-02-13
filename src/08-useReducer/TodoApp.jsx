@@ -28,7 +28,7 @@ export const TodoApp = () => {
 
       </div> 
       <hr />
-      {/* <Elim/> */} 
+      <Elim/> 
     </>
   )
 }

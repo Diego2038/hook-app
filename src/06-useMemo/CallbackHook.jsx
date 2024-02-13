@@ -15,9 +15,10 @@ export const CallbackHook = () => {
   );
 
   useEffect(() => {
+    console.log("use Effect");
     increment();
    }, 
-   [ increment ]);
+   [ increment ]); //! Sólo se renderiza cuando increment se modifica (además de hacerlo por primera vez), lo cual no pasará porque usa un useCallback
   
   
 
@@ -29,7 +30,9 @@ export const CallbackHook = () => {
     <>
       <h1>Callback component hook: { counter }</h1>
       <hr />
-      <ShowIncrement increment={ increment } />
+      <ShowIncrement increment={ increment } loquesea="con memo" />
+      <hr/>
+      <ShowIncrement increment={ () => setCounter( (count) =>  count + 2) } loquesea={"sin memo"} />
     </>
   )
 }

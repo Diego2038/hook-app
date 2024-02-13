@@ -14,9 +14,9 @@ export const MemoHook = () => {
   const [show, setShow] = useState(false);
 
   
-  const { counter, incrementCounter } = useCounter( 4000 );
+  const { counter, incrementCounter } = useCounter( 500 );
   
-  const memorizedValue = useMemo(() => heavyStuff( counter ), [ counter ]);
+  const memorizedValue = useMemo(() => heavyStuff( counter ), [counter]);
 
   return (
     <> 

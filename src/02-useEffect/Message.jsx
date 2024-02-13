@@ -23,6 +23,7 @@ export const Message = () => {
   
     return () => {
       // window.removeEventListener('mousemove',onMouseMove);
+      console.log("Aquí terminó 😭👌");
     }
   }, [])
   

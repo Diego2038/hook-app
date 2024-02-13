@@ -6,6 +6,7 @@ import { Small } from "./Small";
 export const Memorize = () => {
 
   const [show, setShow] = useState(false);
+  console.log('Memorize 👌');
 
   const { counter, incrementCounter } = useCounter(1);
   return (

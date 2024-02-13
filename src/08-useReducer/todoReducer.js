@@ -1,9 +1,9 @@
 
-// { type: [todo remove], payload: id }
+// { typeXD: [todo remove], payload: id }
  
 export const todoReducer = ( initialState = [], action = {} ) => {
 
-  switch ( action.type ) {
+  switch ( action.typeXD ) {
     case '[TODO] Add Todo':
       return [ ...initialState, action.payload ];
     

@@ -4,8 +4,9 @@ import { useForm } from "../hooks";
 
 export const TodoAdd = ({ onNewTodo }) => {
 
-  const { description , onInputChange, onResetForm } = useForm({
+  const { elpepe, description , onInputChange, onResetForm } = useForm({
     description: '', 
+    elpepe: 'el pepe 😭👌'
   });
    
 
@@ -37,6 +38,8 @@ export const TodoAdd = ({ onNewTodo }) => {
           className="btn btn-secondary mt-2">
           Add
         </button>
+        <br /><br />
+        <p>{elpepe}</p>
       </form>
     </>
   )
